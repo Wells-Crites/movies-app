@@ -2,9 +2,298 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300;0,500;1,300&family=Nunito+Sans:wght@200;400;600;800;900&display=swap" rel="stylesheet">
+    <!--Font Awesome-->
+    <script src="https://kit.fontawesome.com/7e4e2e5393.js" crossorigin="anonymous"></script>
+    <!--Custom CSS-->
+    <link rel="stylesheet" href="index.css">
     <title>Movies App</title>
 </head>
 <body>
+
+<!--START OF HTML-->
+<div class="page-wrapper">
+
+    <!--START OF NAVIGATION-->
+    <nav class="navbar bg-body-tertiary mb-5 sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand nav-logo" href="#"><i class="fa-solid fa-film"></i> Black & White Cinema</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!--START OF OFFCANVAS-->
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title mt-2" id="offcanvasNavbarLabel"><i class="fa-solid fa-film"></i> Black & White Cinema</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <hr>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <!--START OF SIGNUP FORM-->
+                            <div class="dropdown">
+                                <button type="button" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+                                    <i class="fa-solid fa-user sign-in-icon"></i> Sign In
+                                </button>
+                                <form class="dropdown-menu p-4">
+                                    <div class="mb-3">
+                                        <label for="exampleDropdownFormEmail2" class="form-label">Email address</label>
+                                        <input type="email" class="form-control" id="exampleDropdownFormEmail2" placeholder="email@example.com">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="exampleDropdownFormPassword2" class="form-label">Password</label>
+                                        <input type="password" class="form-control" id="exampleDropdownFormPassword2" placeholder="Password">
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="dropdownCheck2">
+                                            <label class="form-check-label" for="dropdownCheck2">
+                                                Remember me
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-dark">Submit</button>
+                                </form>
+                            </div>
+                        </li>
+                        <!--END OF SIGNUP FORM-->
+
+                        <!--START OF USER ADD, EDIT, AND DELETE MODAL BUTTONS-->
+                        <div class="dropdown mt-3 mb-2">
+                            <button class="btn btn-dark dropdown-toggle" href="#" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-gear"></i> User Tools
+                            </button>
+
+                            <ul class="dropdown-menu ">
+                                <li>
+                                    <button type="submit" id="add-movie" class="dropdown-item btn btn-dark add-modal-btn" data-bs-toggle="modal" data-bs-target="#addModal" data-bs-whatever="add">Add a movie</button>
+                                </li>
+                                <li>
+                                    <button type="submit" id="edit-movie"  class="dropdown-item btn btn-dark edit-modal-btn" data-bs-toggle="modal" data-bs-target="#editModal" data-bs-whatever="edit">Edit a movie</button>
+                                </li>
+                                <li>
+                                    <button type="submit" id="delete-movie" class="dropdown-item btn btn-dark delete-modal-btn" data-bs-toggle="modal" data-bs-target="#deleteModal" data-bs-whatever="delete">Delete a movie</button>
+                                </li>
+                            </ul>
+                        </div>
+                        <!--START OF USER ADD, EDIT, AND DELETE MODAL BUTTONS-->
+
+                        <!--START OF OFFCANVAS LIST ITEMS-->
+                        <li class="nav-item ms-1">
+                            <a class="nav-link" href="#"><i class="fa-solid fa-ticket"></i> Movie Pass</a>
+                        </li>
+                        <li class="nav-item ms-1">
+                            <a class="nav-link" href="#"><i class="fa-solid fa-id-card"></i> Rewards Program</a>
+                        </li>
+                        <li class="nav-item ms-1">
+                            <a class="nav-link" href="#"><i class="fa-regular fa-calendar-days"></i> Events</a>
+                        </li>
+                        <li class="nav-item ms-1">
+                            <a class="nav-link" href="#"><i class="fa-solid fa-newspaper"></i> News</a>
+                        </li>
+                        <li class="nav-item ms-1">
+                            <a class="nav-link" href="#"><i class="fa-solid fa-binoculars"></i> Movies Coming Soon</a>
+                        </li>
+                        <li class="nav-item ms-1">
+                            <a class="nav-link" href="#"><i class="fa-solid fa-blog"></i> Movies Blog</a>
+                        </li>
+                        <li class="nav-item ms-1">
+                            <a class="nav-link" href="#"><i class="fa-solid fa-people-group"></i> Our Team</a>
+                        </li>
+                        <li class="nav-item ms-1">
+                            <a class="nav-link" href="#"><i class="fa-solid fa-location-pin"></i> Locations</a>
+                        </li>
+                        <li class="nav-item ms-1">
+                            <a class="nav-link" href="#"><i class="fa-solid fa-envelope"></i> Contact Us</a>
+                        </li>
+                    </ul>
+                    <!--END OF OFFCANVAS LIST ITEMS-->
+                </div>
+            </div>
+            <!--END OF OFFCANVAS-->
+        </div>
+    </nav>
+    <!--END OF NAVIGATION-->
+
+
+    <!--START OF SEARCH BAR AND MODAL CONTAINER-->
+    <section class="container-fluid modal-container">
+
+        <!--START OF SEARCHBAR-->
+        <form class="d-flex w-75" role="search">
+            <select class="form-select search-menu mt-3 mb-3 text-center" aria-label="Default select example"></select>
+            <button class="btn btn-outline-dark" id="search-btn" type="submit">Search</button>
+        </form>
+        <!--END OF SEARCHBAR-->
+
+        <!--START OF ADD MODAL-->
+        <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="add-modal">Add a movie</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="user-title" class="form-label">Movie title</label>
+                                <input type="text" class="form-control" id="user-title" aria-describedby="user-movie-title">
+                            </div>
+                            <div class="mb-3">
+                                <label for="user-rating" class="form-label">Rating</label>
+                                <input type="text" class="form-control" id="user-rating">
+                            </div>
+                            <div class="mb-3">
+                                <label for="user-director" class="form-label">Director</label>
+                                <input type="text" class="form-control" id="user-director">
+                            </div>
+                            <!--                            <div class="mb-3">-->
+                            <!--                                <label for="user-plot" class="form-label">Plot</label>-->
+                            <!--                                <input type="text" class="form-control" id="user-plot">-->
+                            <!--                            </div>-->
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-dark" id="add-btn">Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--END OF ADD MODAL-->
+
+        <!--START OF EDIT MODAL-->
+        <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="editModalLabel">Edit a movie</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <select class="form-select edit-menu mt-3 mb-3" aria-label="Default select example"></select>
+                        <form>
+                            <div class="mb-3">
+                                <label for="edit-title" class="form-label">New movie title</label>
+                                <input type="text" class="form-control" id="edit-title" aria-describedby="edit-movie-title">
+                            </div>
+                            <div class="mb-3">
+                                <label for="edit-rating" class="form-label">New rating</label>
+                                <input type="text" class="form-control" id="edit-rating">
+                            </div>
+                            <div class="mb-3">
+                                <label for="edit-director" class="form-label">New director</label>
+                                <input type="text" class="form-control" id="edit-director">
+                            </div>
+                            <!--                            <div class="mb-3">-->
+                            <!--                                <label for="edit-plot" class="form-label">New plot</label>-->
+                            <!--                                <input type="text" class="form-control" id="edit-plot">-->
+                            <!--                            </div>-->
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-dark" id="edit-btn">Edit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--END OF EDIT MODAL-->
+
+        <!--START OF DELETE MODAL-->
+        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="deleteModalLabel">Delete a movie</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <select class="form-select delete-menu mt-3 mb-3" aria-label="Default select example"></select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-dark" id="delete-btn">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--END OF DELETE MODAL-->
+
+    </section>
+    <!--END OF SEARCH BAR AND MODAL CONTAINER-->
+
+
+    <!--START OF MOVIE CARDS DISPLAY CONTAINER-->
+    <section class="container">
+        <div class="row row-cols-1 row-cols-md-2 g-4" id="movies"></div>
+        <hr class="footer-hr">
+    </section>
+    <!--START OF MOVIE CARDS DISPLAY CONTAINER-->
+
+
+
+    <!--START OF FOOTER-->
+    <div class="d-flex flex-column h-100">
+        <footer class="w-100 py-4 flex-shrink-0 text-white">
+            <div class="container py-4">
+                <div class="row gy-4 gx-5">
+                    <div class="col-lg-4 col-md-6">
+                        <h6 class=" h3 text-white"><a class="footer-logo" href="#"><i class="fa-solid fa-film"></i> Black & White Cinema</a></h6>
+                        <p class="small">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti doloremque dolorum maiores? Ab, accusamus blanditiis debitis dolorum ducimus eaque eius expedita illo ipsum maxime neque non omnis quia tenetur voluptatum.</p>
+                        <p class="small mb-0">&copy 2023; All rights reserved. <a class="text-white" href="#"><i class="fa-solid fa-film"></i>  www.blackandhitecinema.com</a></p>
+                    </div>
+                    <div class="col-lg-2 col-md-6">
+                        <h5 class="text-white mb-3">Quick links</h5>
+                        <ul class="list-unstyled text-muted">
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Legal</a></li>
+                            <li><a href="#">Terms & Conditions</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">Help & Support</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2 col-md-6">
+                        <h5 class="text-white mb-3">Social Media</h5>
+                        <ul class="list-unstyled text-muted text-left">
+                            <li>
+                                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="icon-custom fa-brands fa-facebook-f fa-fw"></i></a>
+                            </li>
+                            <li>
+                                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="icon-custom fab fa-twitter fa-fw"></i></a>
+                            </li>
+                            <li>
+                                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="icon-custom fab fa-instagram fa-fw"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <h5 class="text-white mb-3">Newsletter</h5>
+                        <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+                        <form action="#">
+                            <div class="input-group mb-3">
+                                <input class="form-control" type="text" placeholder="Email address" aria-label="user's email address" aria-describedby="button-addon2">
+                                <button class="btn btn-dark" id="button-addon2" type="button"><i class="fas fa-paper-plane"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>
+<!--END OF FOOTER-->
+
+<!--END OF HTML-->
 
 <!-- The core Firebase JS SDK and Databse library -->
 <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
@@ -18,6 +307,13 @@
 
 <!-- Your local JS file to add functions that interact with the database -->
 <script src="js/movies-api.js"></script>
+
+<!--jQuery-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+<!--Bootstrap-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+<!--Custom-->
 
 <!-- Your local JS file to add functions that USE your functions from movies-api.js
     and INTERACT with the DOM -->
