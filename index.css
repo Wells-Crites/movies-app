@@ -57,7 +57,7 @@ body {
     padding-right: 1rem;
 }
 
-.title, .rating, .comments, .director {
+.title, .rating, .released, .user-rating, .director, .plot {
     text-align: center;
     margin: 0.5rem auto;
     word-wrap: break-word;
