@@ -12,12 +12,17 @@
         movieCard +=
             `<div class="col-lg-4 col-md-6 col-sm-12">
                  <div class="card jump">
-                   <img src="images/default-movie-poster.png" class="card-img-top" alt="No movie poster image available">
-                   <h1 class="title">${movie.title}</h1>
-                   <h3 class="rating">Rating: ${movie.rating}</h3>
-                   <div class="director">Directed By: ${movie.director}</div>
-                   <div class="comments">Comments: ${movie.comments}</div>
-               </div>
+<!--                   <img src="images/default-movie-poster.png" class="card-img-top" alt="No movie poster image available">-->
+                   <img src='${movie.poster_url}' class="card-img-top" alt="movie poster">
+                            <h1 class="title">${movie.title}</h1>
+                            <h3 class="rating">${movie.rating}</h3>
+                            <h4 class="released">Released: ${movie.released_year}</h4>
+                            <h5 class="user-rating">Rating: ${movie.user_rating}</h5>
+                            <div class="director">Directed By: ${movie.director}</div>
+                            <div class="plot">Plot:
+                                <div>${movie.plot}</div>
+                            </div>
+                 </div>
              </div>`
 
                 movieData += `<option value=${movie.id}>${movie.title}</option>`;
@@ -35,8 +40,12 @@
         let userAddedMovieData = {
             title: $("#user-title").val(),
             rating: $("#user-rating").val(),
+            released_year: $("#user-release-year").val(),
             director: $("#user-director").val(),
-            comments: $("#user-comment").val()
+            plot: $("#user-plot").val(),
+            genre: $('#user-genre').val(),
+            user_rating: $("#user-rating-score").val(),
+            poster_url: $('#user-poster').val()
         }
         addMovie(userAddedMovieData)
     });
@@ -54,8 +63,12 @@ $("#edit-btn").on('click', (event) => {
     let userEditInput = {
         title: $("#edit-title").val(),
         rating: $("#edit-rating").val(),
+        released_year: $("#edit-release-year").val(),
         director: $("#edit-director").val(),
-        comments: $("#edit-comment").val()
+        plot: $("#edit-plot").val(),
+        genre: $('#edit-genre').val(),
+        user_rating: $("#edit-rating-score").val(),
+        poster_url: $('#edit-poster').val()
     }
 
     updateMovie(availableMovies, userEditInput);
@@ -63,13 +76,16 @@ $("#edit-btn").on('click', (event) => {
 
 //Delete Movie
 
-$(".delete-menu").change( function () {
+$("#select-delete").change( function () {
     //Gets the user selected movie data from the dropdown menu
     let userSelection = $(this).val();
     console.log(userSelection);
 
     //When the submit button is clicked, the function sends the DELETE request to the database with the user selected information to be deleted.
-    $("#delete-btn").on('click', deleteMovie(userSelection))
+    $("#delete-btn").on('click', function (){
+       deleteMovie({id:userSelection})
+    })
+
 
 
 });

@@ -144,7 +144,7 @@
                     <div class="modal-body">
                         <form>
                             <div class="mb-3">
-                                <label for="user-title" class="form-label">Movie title</label>
+                                <label for="user-title" class="form-label">Movie Title</label>
                                 <input type="text" class="form-control" id="user-title" aria-describedby="user-movie-title">
                             </div>
                             <div class="mb-3">
@@ -152,13 +152,29 @@
                                 <input type="text" class="form-control" id="user-rating">
                             </div>
                             <div class="mb-3">
+                                <label for="user-release-year" class="form-label">Release Year</label>
+                                <input type="text" class="form-control" id="user-release-year">
+                            </div>
+                            <div class="mb-3">
                                 <label for="user-director" class="form-label">Director</label>
                                 <input type="text" class="form-control" id="user-director">
                             </div>
-                            <!--                            <div class="mb-3">-->
-                            <!--                                <label for="user-plot" class="form-label">Plot</label>-->
-                            <!--                                <input type="text" class="form-control" id="user-plot">-->
-                            <!--                            </div>-->
+                            <div class="mb-3">
+                                <label for="user-plot" class="form-label">Plot</label>
+                                <input type="text" class="form-control" id="user-plot">
+                            </div>
+                            <div class="mb-3">
+                                <label for="user-genre" class="form-label">Genre</label>
+                                <input type="text" class="form-control" id="user-genre">
+                            </div>
+                            <div class="mb-3">
+                                <label for="user-rating-score" class="form-label">User Rating (0-10)</label>
+                                <input type="text" class="form-control" id="user-rating-score">
+                            </div>
+                            <div class="mb-3">
+                                <label for="user-poster" class="form-label">Poster URL</label>
+                                <input type="text" class="form-control" id="user-poster">
+                            </div>
                         </form>
                     </div>
                     <div class="modal-footer">
@@ -182,21 +198,37 @@
                         <select class="form-select edit-menu mt-3 mb-3" aria-label="Default select example"></select>
                         <form>
                             <div class="mb-3">
-                                <label for="edit-title" class="form-label">New movie title</label>
+                                <label for="edit-title" class="form-label">New Movie Title</label>
                                 <input type="text" class="form-control" id="edit-title" aria-describedby="edit-movie-title">
                             </div>
                             <div class="mb-3">
-                                <label for="edit-rating" class="form-label">New rating</label>
+                                <label for="edit-rating" class="form-label">New Rating</label>
                                 <input type="text" class="form-control" id="edit-rating">
+                            </div>
+                            <div class="mb-3">
+                                <label for="edit-release-year" class="form-label">Release Year</label>
+                                <input type="text" class="form-control" id="edit-release-year">
                             </div>
                             <div class="mb-3">
                                 <label for="edit-director" class="form-label">New director</label>
                                 <input type="text" class="form-control" id="edit-director">
                             </div>
-                            <!--                            <div class="mb-3">-->
-                            <!--                                <label for="edit-plot" class="form-label">New plot</label>-->
-                            <!--                                <input type="text" class="form-control" id="edit-plot">-->
-                            <!--                            </div>-->
+                            <div class="mb-3">
+                                <label for="edit-plot" class="form-label">New plot</label>
+                                <input type="text" class="form-control" id="edit-plot">
+                            </div>
+                            <div class="mb-3">
+                                <label for="edit-genre" class="form-label">New Genre</label>
+                                <input type="text" class="form-control" id="edit-genre">
+                            </div>
+                            <div class="mb-3">
+                                <label for="edit-rating-score" class="form-label">New User Rating (0-10)</label>
+                                <input type="text" class="form-control" id="edit-rating-score">
+                            </div>
+                            <div class="mb-3">
+                                <label for="edit-poster" class="form-label">New Poster URL</label>
+                                <input type="text" class="form-control" id="edit-poster">
+                            </div>
                         </form>
                     </div>
                     <div class="modal-footer">
@@ -217,7 +249,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <select class="form-select delete-menu mt-3 mb-3" aria-label="Default select example"></select>
+                        <select class="form-select delete-menu mt-3 mb-3" id="select-delete" aria-label="Default select example"></select>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
