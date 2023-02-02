@@ -2,7 +2,7 @@
 // Configuring Firebase is more involved than what is covered in this lesson,
 // so we have provided a class that will handle the configuration for you.
 let db = new FirebaseDatabase({
-    team: "YOUR_TEAM_NAME" // Replace this with your team name
+    team: "teamD" // Replace this with your team name
 });
 
 // You will use the "db" object to make requests to the database very similarly to how you
@@ -45,3 +45,38 @@ const addMovie = async (movie) => {
 
 // Here is where you will create your own functions to further interact with the database.
 // HAPPY CODING!!!
+
+// edit the movies
+const updateMovie = async (selection, movie) => {
+    try {
+        const url = `/movies/${selection}`;
+        const options = {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(movie),
+        };
+        let response = await db.fetch(url, options);
+        return await response.json();
+    } catch (e) {
+        console.error(e);
+    }
+}
+
+// delete the movies
+const deleteMovie = async (movie) => {
+    try {
+        const url = `/movies/${movie.id}`;
+        const options = {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        };
+        let response = await db.fetch(url, options);
+        return await response.json();
+    } catch (e) {
+        console.error(e);
+    }
+}
