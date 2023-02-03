@@ -41,6 +41,7 @@ const addMovie = async (movie) => {
     };
     let response = await db.fetch(url, options);
     return await response.json();
+
 }
 
 // Here is where you will create your own functions to further interact with the database.
