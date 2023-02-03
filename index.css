@@ -45,6 +45,13 @@ body {
     width: 400px;
     height: 350px;
 }
+.card-custom{
+    background-color: #868e96;
+    color: #fff;
+    text-shadow: 1px 1px 0 #000 ;;
+    box-shadow: rgba(242, 242, 242) 2px 8px 2px;
+    /*#f1f3f5*/
+}
 .jump {
     transition: all .2s ease-in-out;
 }
@@ -57,12 +64,17 @@ body {
     padding-right: 1rem;
 }
 
-.title, .rating, .released, .user-rating, .director, .plot {
+.title, .rating, .released, .user-rating, .director, .genre, .plot {
     text-align: center;
     margin: 0.5rem auto;
     word-wrap: break-word;
 }
-
+.plot{
+    font-weight: 500;
+}
+.plot-data{
+    font-style: italic;
+}
 .modal-container{
     display: flex;
     justify-content: space-evenly;
@@ -84,8 +96,8 @@ body {
     margin: auto 0.5rem;
     width: 5rem;
     height: 2.4rem;
-    color: #fff;
-    background-color: #000;
+    color: #000;
+    background-color: #fff;
 }
 
 .add-modal-btn:hover, .edit-modal-btn:hover, .delete-modal-btn:hover{
@@ -95,7 +107,8 @@ body {
 /*    opacity: 0.8;*/
 /*}*/
 #search-btn:hover{
-    background-color: #495057;
+    color: #FFF;
+    background-color: #000;
 }
 
 /*FOOTER SECTION STYLES*/

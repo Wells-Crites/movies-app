@@ -80,3 +80,19 @@ const deleteMovie = async (movie) => {
         console.error(e);
     }
 }
+
+const searchMovie = async (movie)=>{
+    try{
+        const url = `/movies/${movie.id}`;
+        const options = {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        };
+        let response = await db.fetch(url, options);
+        return await response.json();
+    } catch (e) {
+        console.error(e);
+    }
+}
