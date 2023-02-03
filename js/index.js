@@ -11,46 +11,48 @@
     movies.forEach((movie) => {
         movieCard +=
             `<div class="col-lg-4 col-md-6 col-sm-12">
-                 <div class="card jump">
+                 <div class="card card-custom jump">
 <!--                   <img src="images/default-movie-poster.png" class="card-img-top" alt="No movie poster image available">-->
                    <img src='${movie.poster_url}' class="card-img-top" alt="movie poster">
                             <h1 class="title">${movie.title}</h1>
                             <h3 class="rating">${movie.rating}</h3>
                             <h4 class="released">Released: ${movie.released_year}</h4>
                             <h5 class="user-rating">Rating: ${movie.user_rating}</h5>
-                            <div class="director">Directed By: ${movie.director}</div>
+                            <div class="director">Directed by: ${movie.director}</div>
+                            <div class="genre">Genre: ${movie.genre}</div>
                             <div class="plot">Plot:
-                                <div>${movie.plot}</div>
+                                <div class="plot-data">${movie.plot}</div>
                             </div>
                  </div>
              </div>`
 
                 movieData += `<option value=${movie.id}>${movie.title}</option>`;
+
                 $("#movies").html(movieCard);
                 $(".delete-menu").html("<option selected>Select a movie to delete</option>" + movieData);
                 $(".edit-menu").html("<option selected>Select a movie to edit</option>" + movieData);
                 $(".search-menu").html("<option selected>Search for a movie</option>" + movieData);
                 });
 
+})();
 
 //     Add movies
-    $('#add-btn').on('click', (event) => {
-        event.preventDefault();
+$('#add-btn').on('click', (event) => {
+    event.preventDefault();
 
-        let userAddedMovieData = {
-            title: $("#user-title").val(),
-            rating: $("#user-rating").val(),
-            released_year: $("#user-release-year").val(),
-            director: $("#user-director").val(),
-            plot: $("#user-plot").val(),
-            genre: $('#user-genre').val(),
-            user_rating: $("#user-rating-score").val(),
-            poster_url: $('#user-poster').val()
-        }
-        addMovie(userAddedMovieData)
-    });
+    let userAddedMovieData = {
+        title: $("#user-title").val(),
+        rating: $("#user-rating").val(),
+        released_year: $("#user-release-year").val(),
+        director: $("#user-director").val(),
+        plot: $("#user-plot").val(),
+        genre: $('#user-genre').val(),
+        user_rating: $("#user-rating-score").val(),
+        poster_url: $('#user-poster').val()
+    }
+    addMovie(userAddedMovieData)
+});
 
-})();
 
 //Edit Movies
 
@@ -87,6 +89,17 @@ $("#select-delete").change( function () {
     })
 
 
+});
+
+//Search function
+$("#search-menu").change(function (){
+
+    let selectedMovie = $(this).val();
+    console.log(selectedMovie);
+
+    $("#search-btn").on('click', function (){
+        searchMovie({id:selectedMovie})
+    })
 
 });
 
