@@ -20,7 +20,6 @@
 <!--START OF HTML-->
 <div class="page-wrapper">
 
-
     <!--START OF NAVIGATION-->
     <nav class="navbar bg-body-tertiary sticky-top">
         <div class="container-fluid">
@@ -146,7 +145,6 @@
 
 <!--START MOVIE POSTER CAROUSEL -->
     <div class="container">
-
     <div class="d-flex justify-content-center align-items-center coming-soon">
         <h1>Movies Coming Soon</h1>
     </div>
@@ -162,8 +160,6 @@
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="7" aria-label="Slide 8"></button>
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="8" aria-label="Slide 9"></button>
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="9" aria-label="Slide 10"></button>
-
-
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
@@ -208,15 +204,15 @@
     </div>
         <hr class="footer-hr">
     </div>
+    <!--END MOVIE POSTER CAROUSEL-->
 
-<!--END MOVIE POSTER CAROUSEL-->
+    <!--START OF SEARCH BAR AND MOVIE CARD CONTAINER-->
     <div class="container-fluid movie-container">
 
         <div class="d-flex justify-content-center align-items-center now-playing">
             <h1>Movies Now Playing</h1>
         </div>
 
-        <!--START OF SEARCH BAR AND MODAL CONTAINER-->
         <section class="container-fluid modal-container">
 
             <!--START OF SEARCHBAR-->
@@ -227,14 +223,17 @@
             </div>
         </section>
         <!--END OF SEARCHBAR-->
+
             <!--START OF MOVIE CARDS DISPLAY CONTAINER-->
             <section class="container">
                 <div class="row row-cols-1 row-cols-md-2 g-5" id="movies"></div>
                 <hr class="footer-hr">
             </section>
-
-            <!--START OF MOVIE CARDS DISPLAY CONTAINER-->
+            <!--END OF MOVIE CARDS DISPLAY CONTAINER-->
     </div>
+    <!--END OF SEARCH BAR AND MODAL CONTAINER-->
+
+    <!--START OF MODAL DATA SECTION-->
 
         <!--START OF ADD MODAL-->
         <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
@@ -364,7 +363,7 @@
         <!--END OF DELETE MODAL-->
 
     </section>
-    <!--END OF SEARCH BAR AND MODAL CONTAINER-->
+    <!--END OF MODAL DATA SECTION-->
 
 
     <!--START OF FOOTER-->
@@ -421,6 +420,9 @@
 </div>
 <!--END OF HTML-->
 
+
+<!--START OF JAVASCRIPT AND JQUERY-->
+
 <!-- The core Firebase JS SDK and Databse library -->
 <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-firestore.js"></script>
@@ -444,5 +446,7 @@
 <!-- Your local JS file to add functions that USE your functions from movies-api.js
     and INTERACT with the DOM -->
 <script src="js/index.js"></script>
+
+<!--END OF JAVASCRIPT AND JQUERY-->
 </body>
 </html>
