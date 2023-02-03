@@ -47,7 +47,7 @@ const addMovie = async (movie) => {
 // Here is where you will create your own functions to further interact with the database.
 // HAPPY CODING!!!
 
-// edit the movies
+// This function allows the user to edit/update a movie card's data
 const updateMovie = async (selection, movie) => {
     try {
         const url = `/movies/${selection}`;
@@ -65,7 +65,7 @@ const updateMovie = async (selection, movie) => {
     }
 }
 
-// delete the movies
+// This function allows the user to delete a movie
 const deleteMovie = async (movie) => {
     try {
         const url = `/movies/${movie.id}`;
@@ -82,6 +82,7 @@ const deleteMovie = async (movie) => {
     }
 }
 
+//This function allows the user to search for a specific movie
 const searchMovie = async (movie)=>{
     try{
         const url = `/movies/${movie.id}`;

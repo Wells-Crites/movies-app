@@ -4,6 +4,10 @@
     // with your team name in the "js/movies-api.js" file.
     let moviesArray = [];
 
+
+    // This function loads the "loading" GIF on page load and then calls the getMovies() function to get all the movies in
+    // the movies' database. After that, it loops through each movie and creates movie card and appends the card to the DOM
+    // and adds the movie's id and title to search, edit, and delete search bars.
 const movies = async () => {
     let loading = `<div class="loading"><img class="img-loading m-auto" src="/images/loading.gif"></div>`;
     $("#movies").html(loading);
@@ -43,10 +47,11 @@ const movies = async () => {
 
  movies();
 
+//Help function that takes in a movie value (id) as a argument and creates/updates a movie card with that passes in data
 const updateMovieCard = (input) =>{
     let movieCard = "";
-    movieCard += `<div class="col-lg-4 col-md-6 col-sm-12">
-                                  <div class="card jump">
+    movieCard += `<div class="w-100">
+                                  <div class="card card-custom jump">
                                      <img src='${input.poster_url}' class="card-img-top" alt="movie poster">
                                         <h1 class="title">${input.title}</h1>
                                         <h3 class="rating">${input.rating}</h3>
@@ -62,7 +67,9 @@ const updateMovieCard = (input) =>{
                             </div>`
     $("#movies").append(movieCard);
 }
-//     Add movies
+
+//This function allows the user to create and add a new movie to the database while dynamically updating the DOM
+//with the new movie card.
     $('#add-btn').on('click', () => {
 
         let userAddedMovieData = {
@@ -83,7 +90,8 @@ const updateMovieCard = (input) =>{
 
 
 
-//Edit Movies
+//This function allows the user to edit/modify an existing movie in the database and dynamically updates the DOM
+//with that modified movie card data.
 
 $("#edit-btn").on('click', () => {
     //Allows the user to select from a current list of available movies from the database
@@ -105,8 +113,8 @@ $("#edit-btn").on('click', () => {
     let movieCard = "";
     for (let movie of moviesArray) {
         if (movie.id === movieCard){
-            movieCard += `<div class="col-lg-4 col-md-6 col-sm-12">
-                                  <div class="card jump">
+            movieCard += `<div class="w-100">
+                                  <div class="card card-custom jump">
                                      <img src='${userEditInput.poster_url}' class="card-img-top" alt="movie poster">
                                         <h1 class="title">${userEditInput.title}</h1>
                                         <h3 class="rating">${userEditInput.rating}</h3>
@@ -129,7 +137,8 @@ $("#edit-btn").on('click', () => {
 
 });
 
-//Delete Movie
+////This function allows the user to delete movie in the database and dynamically updates the DOM
+// with the new amount of movie's in the database .
 
 $("#select-delete").change( function () {
     //Gets the user selected movie data from the dropdown menu
@@ -144,7 +153,8 @@ $("#select-delete").change( function () {
 
 });
 
-//Search function
+//This function allows the user to search for a specific movie in the database and dynamically updates the DOM to display
+// the movie the user search for.
 
 $("#search-menu").change(function (){
 
@@ -156,8 +166,8 @@ $("#search-menu").change(function (){
     let movieCard = "";
     for (let movie of moviesArray) {
         if (movie.id === selectedMovie){
-            movieCard += `<div class="col-lg-4 col-md-6 col-sm-12">
-                                  <div class="card jump">
+            movieCard += `<div class="w-100">
+                                  <div class="card card-custom jump">
                                      <img src='${movie.poster_url}' class="card-img-top" alt="movie poster">
                                         <h1 class="title">${movie.title}</h1>
                                         <h3 class="rating">${movie.rating}</h3>
