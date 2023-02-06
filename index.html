@@ -2,9 +2,456 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300;0,500;1,300&family=Nunito+Sans:wght@200;400;600;800;900&display=swap" rel="stylesheet">
+    <!--Font Awesome-->
+    <script src="https://kit.fontawesome.com/7e4e2e5393.js" crossorigin="anonymous"></script>
+    <!--Custom CSS-->
+    <link rel="stylesheet" href="index.css">
     <title>Movies App</title>
 </head>
 <body>
+
+<!--START OF HTML-->
+<div class="page-wrapper">
+
+
+    <!--START OF NAVIGATION-->
+    <nav class="navbar bg-body-tertiary sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand nav-logo ps-3" href="#"><i class="fa-solid fa-film"></i> Black & White Cinema</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!--START OF OFFCANVAS-->
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title mt-2" id="offcanvasNavbarLabel"><i class="fa-solid fa-film"></i> Black & White Cinema</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <hr>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <!--START OF SIGNUP FORM-->
+                            <div class="dropdown">
+                                <button type="button" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+                                    <i class="fa-solid fa-user sign-in-icon"></i> Sign In
+                                </button>
+                                <form class="dropdown-menu p-4">
+                                    <div class="mb-3">
+                                        <label for="exampleDropdownFormEmail2" class="form-label">Email address</label>
+                                        <input type="email" class="form-control" id="exampleDropdownFormEmail2" placeholder="email@example.com">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="exampleDropdownFormPassword2" class="form-label">Password</label>
+                                        <input type="password" class="form-control" id="exampleDropdownFormPassword2" placeholder="Password">
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="dropdownCheck2">
+                                            <label class="form-check-label" for="dropdownCheck2">
+                                                Remember me
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-dark">Submit</button>
+                                </form>
+                            </div>
+                        </li>
+                        <!--END OF SIGNUP FORM-->
+
+                        <!--START OF USER ADD, EDIT, AND DELETE MODAL BUTTONS-->
+                        <div class="dropdown mt-3 mb-2">
+                            <button class="btn btn-dark dropdown-toggle" href="#" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-gear"></i> User Tools
+                            </button>
+
+                            <ul class="dropdown-menu ">
+                                <li>
+                                    <button type="submit" id="add-movie" class="dropdown-item btn btn-dark add-modal-btn" data-bs-toggle="modal" data-bs-target="#addModal" data-bs-whatever="add">Add a movie</button>
+                                </li>
+                                <li>
+                                    <button type="submit" id="edit-movie"  class="dropdown-item btn btn-dark edit-modal-btn" data-bs-toggle="modal" data-bs-target="#editModal" data-bs-whatever="edit">Edit a movie</button>
+                                </li>
+                                <li>
+                                    <button type="submit" id="delete-movie" class="dropdown-item btn btn-dark delete-modal-btn" data-bs-toggle="modal" data-bs-target="#deleteModal" data-bs-whatever="delete">Delete a movie</button>
+                                </li>
+                            </ul>
+                        </div>
+                        <!--START OF USER ADD, EDIT, AND DELETE MODAL BUTTONS-->
+
+                        <!--START OF OFFCANVAS LIST ITEMS-->
+                        <li class="nav-item ms-1">
+                            <a class="nav-link" href="#"><i class="fa-solid fa-ticket"></i> Movie Pass</a>
+                        </li>
+                        <li class="nav-item ms-1">
+                            <a class="nav-link" href="#"><i class="fa-solid fa-id-card"></i> Rewards Program</a>
+                        </li>
+                        <li class="nav-item ms-1">
+                            <a class="nav-link" href="#"><i class="fa-regular fa-calendar-days"></i> Events</a>
+                        </li>
+                        <li class="nav-item ms-1">
+                            <a class="nav-link" href="#"><i class="fa-solid fa-newspaper"></i> News</a>
+                        </li>
+                        <li class="nav-item ms-1">
+                            <a class="nav-link" href="#"><i class="fa-solid fa-binoculars"></i> Movies Coming Soon</a>
+                        </li>
+                        <li class="nav-item ms-1">
+                            <a class="nav-link" href="#"><i class="fa-solid fa-blog"></i> Movies Blog</a>
+                        </li>
+                        <li class="nav-item ms-1">
+                            <a class="nav-link" href="#"><i class="fa-solid fa-people-group"></i> Our Team</a>
+                        </li>
+                        <li class="nav-item ms-1">
+                            <a class="nav-link" href="#"><i class="fa-solid fa-location-pin"></i> Locations</a>
+                        </li>
+                        <li class="nav-item ms-1">
+                            <a class="nav-link" href="#"><i class="fa-solid fa-envelope"></i> Contact Us</a>
+                        </li>
+                    </ul>
+                    <!--END OF OFFCANVAS LIST ITEMS-->
+                </div>
+            </div>
+            <!--END OF OFFCANVAS-->
+        </div>
+    </nav>
+    <!--END OF <NAVIGATION-->
+
+
+    </NAVIGATION-->
+    <!--HERO SECTION-->
+<!--px-4 py-5-->
+    <div class="container-fluid hero-container col-xxl-8 w-100">
+        <div class="row flex-lg-row-reverse align-items-center g-5">
+            <div class="col-10 col-sm-8 col-lg-6">
+                <img src="images/Jurassic-Park.jpeg" class="d-block mx-lg-auto img-fluid p-4" width="400px" alt="" loading="lazy">
+            </div>
+            <div class="col-lg-6">
+                <h1 class="display-5 fw-bold lh-1 mb-3">Classic Movie Night Spot Light</h1>
+                <p class="lead">"God creates dinosaurs. God destroys dinosaurs. God creates Man. Man destroys God. Man creates Dinosaurs." -Dr. Ian Malcom, 1993. </p>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                    <button type="button" class="btn btn-lg hero-btn px-4 me-md-2">Watch</button>
+                    <button type="button" class="btn  btn-lg hero-btn px-4">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+        <!--END HERO SECTION-->
+
+<!--START MOVIE POSTER CAROUSEL -->
+    <div class="container">
+
+    <div class="d-flex justify-content-center align-items-center coming-soon">
+        <h1>Movies Coming Soon</h1>
+    </div>
+    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="5" aria-label="Slide 6"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="6" aria-label="Slide 7"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="7" aria-label="Slide 8"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="8" aria-label="Slide 9"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="9" aria-label="Slide 10"></button>
+
+
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://resizing.flixster.com/eW_7mivq9SptMmqtC_quAxHNuz4=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzLzE3ODE3YTQ1LTNhNjctNDM5Zi04YjgzLWEzNWEzMDdiNDk4Mi5qcGc=" class="d-block carousel-img " alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="https://resizing.flixster.com/BrJ2riaU-UtVbekcguPeqoJEr4I=/ems.cHJkLWVtcy1hc3NldHMvdHZzZXJpZXMvMWE2OWVmOTktZDc0NS00YjU2LWJlMWQtMmFhY2Q2Mjk3MjNhLmpwZw==" class="d-block w-100 carousel-img" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="https://resizing.flixster.com/Y71xVAqoQzO9VhbASg1TlDTU4oM=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzLzU5OTgwOTcwLTZjNjktNGRlOC1hNmQ4LTczNjQ1YWU3ZWJjOS5qcGc=" class="d-block carousel-img" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="https://resizing.flixster.com/6OH2u2Hu1YSxl2G8Mx6I2dBQQw4=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzL2IxMzc0ZDdhLWJlOTUtNDIyOC05YzBkLTdkNWEwNWUwOWJiZS5qcGc=" class="d-block carousel-img" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="https://resizing.flixster.com/DogAR8d4EXjVmMAg0oyJ7vGM6CM=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzLzI5MzRmZTJiLTlmY2YtNDg0MS1iY2MxLTJiNTBkOWUyZGJkZS5qcGc=" class="d-block carousel-img" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="https://resizing.flixster.com/rK4q8Us5dBBJRPOlDXXdMpSm4AQ=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzL2YzZmJhZDQ5LWRkYjUtNDFkZi05YWM4LTk5YWJlNDgxZWI1Ny5qcGc=" class="d-block carousel-img" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="https://resizing.flixster.com/P6s0RlGDQvFmVgWgdBbyuAZwHMU=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzLzFhZjcxYTQ3LTExY2UtNDUxNy05NTI5LWI2ZjhkMGY1ODg1MS5qcGc=" class="d-block carousel-img" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="https://resizing.flixster.com/gzBhqIv6VeNxB5uuVX8FYybHuqM=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzLzg3NWFlZmQ2LWU5ZWUtNGUwMC04N2FhLWZlMDhjZTFkYTZkZC5qcGc=" class="d-block carousel-img" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="https://resizing.flixster.com/cMBbeXy7hKVIqDg6UZUuSJaaYGI=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzLzFiMGEzMzY0LTFlNjQtNGMwNS05YTgzLTIyZDZlM2YxMmYwNS5qcGc=" class="d-block carousel-img" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="https://resizing.flixster.com/PSuxLlqSG_PuMPKlg221xiV9X1I=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzLzBkOGU2YmQyLTdhZTYtNDc4NC05NGU4LWFjODg4YmE1ZjA3ZS5qcGc=" class="d-block carousel-img" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+        <hr class="footer-hr">
+    </div>
+
+<!--END MOVIE POSTER CAROUSEL-->
+    <div class="container-fluid movie-container">
+
+        <div class="d-flex justify-content-center align-items-center now-playing">
+            <h1>Movies Now Playing</h1>
+        </div>
+
+        <!--START OF SEARCH BAR AND MODAL CONTAINER-->
+        <section class="container-fluid modal-container">
+
+            <!--START OF SEARCHBAR-->
+            <div class="d-flex w-50" role="search">
+                <!--mt-3 mb-3-->
+                <select class="form-select search-menu" id="search-menu" aria-label="Default select example"></select>
+                <button class="btn btn-outline-dark" id="search-btn" type="submit">Search</button>
+            </div>
+        </section>
+        <!--END OF SEARCHBAR-->
+            <!--START OF MOVIE CARDS DISPLAY CONTAINER-->
+            <section class="container">
+                <div class="row row-cols-1 row-cols-md-2 g-5" id="movies"></div>
+                <hr class="footer-hr">
+            </section>
+
+            <!--START OF MOVIE CARDS DISPLAY CONTAINER-->
+    </div>
+
+        <!--START OF ADD MODAL-->
+        <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="add-modal">Add a movie</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="user-title" class="form-label">Movie Title</label>
+                                <input type="text" class="form-control" id="user-title" aria-describedby="user-movie-title">
+                            </div>
+                            <div class="mb-3">
+                                <label for="user-rating" class="form-label">Rating</label>
+                                <input type="text" class="form-control" id="user-rating">
+                            </div>
+                            <div class="mb-3">
+                                <label for="user-release-year" class="form-label">Release Year</label>
+                                <input type="text" class="form-control" id="user-release-year">
+                            </div>
+                            <div class="mb-3">
+                                <label for="user-director" class="form-label">Director</label>
+                                <input type="text" class="form-control" id="user-director">
+                            </div>
+                            <div class="mb-3">
+                                <label for="user-plot" class="form-label">Plot</label>
+                                <input type="text" class="form-control" id="user-plot">
+                            </div>
+                            <div class="mb-3">
+                                <label for="user-genre" class="form-label">Genre</label>
+                                <input type="text" class="form-control" id="user-genre">
+                            </div>
+                            <div class="mb-3">
+                                <label for="user-rating-score" class="form-label">User Rating (0-10)</label>
+                                <input type="text" class="form-control" id="user-rating-score">
+                            </div>
+                            <div class="mb-3">
+                                <label for="user-poster" class="form-label">Poster URL</label>
+                                <input type="text" class="form-control" id="user-poster">
+                            </div>
+                            <div class="mb-3">
+                                <label for="user-poster" class="form-label">Cast</label>
+                                <input type="text" class="form-control" id="user-cast">
+                            </div>
+                            <div class="mb-3">
+                                <label for="user-poster" class="form-label">Writers</label>
+                                <input type="text" class="form-control" id="user-writers">
+                            </div>
+                            <div class="mb-3">
+                                <label for="user-poster" class="form-label">Awards</label>
+                                <input type="text" class="form-control" id="user-awards">
+                            </div>
+                            <div class="mb-3">
+                                <label for="user-poster" class="form-label">Runtime (minutes)</label>
+                                <input type="text" class="form-control" id="user-runtime">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-dark" id="add-btn">Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--END OF ADD MODAL-->
+
+        <!--START OF EDIT MODAL-->
+        <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="editModalLabel">Edit a movie</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <select class="form-select edit-menu mt-3 mb-3" aria-label="Default select example"></select>
+                        <form>
+                            <div class="mb-3">
+                                <label for="edit-title" class="form-label">New Movie Title</label>
+                                <input type="text" class="form-control" id="edit-title" aria-describedby="edit-movie-title">
+                            </div>
+                            <div class="mb-3">
+                                <label for="edit-rating" class="form-label">New Rating</label>
+                                <input type="text" class="form-control" id="edit-rating">
+                            </div>
+                            <div class="mb-3">
+                                <label for="edit-release-year" class="form-label">Release Year</label>
+                                <input type="text" class="form-control" id="edit-release-year">
+                            </div>
+                            <div class="mb-3">
+                                <label for="edit-director" class="form-label">New Director</label>
+                                <input type="text" class="form-control" id="edit-director">
+                            </div>
+                            <div class="mb-3">
+                                <label for="edit-plot" class="form-label">New Plot</label>
+                                <input type="text" class="form-control" id="edit-plot">
+                            </div>
+                            <div class="mb-3">
+                                <label for="edit-genre" class="form-label">New Genre</label>
+                                <input type="text" class="form-control" id="edit-genre">
+                            </div>
+                            <div class="mb-3">
+                                <label for="edit-rating-score" class="form-label">New User Rating (0-10)</label>
+                                <input type="text" class="form-control" id="edit-rating-score">
+                            </div>
+                            <div class="mb-3">
+                                <label for="edit-poster" class="form-label">New Cast</label>
+                                <input type="text" class="form-control" id="edit-cast">
+                            </div>
+                            <div class="mb-3">
+                                <label for="edit-poster" class="form-label">New Writers</label>
+                                <input type="text" class="form-control" id="edit-writers">
+                            </div>
+                            <div class="mb-3">
+                                <label for="edit-poster" class="form-label">New Awards</label>
+                                <input type="text" class="form-control" id="edit-awards">
+                            </div>
+                            <div class="mb-3">
+                                <label for="edit-poster" class="form-label">Runtime (minutes)</label>
+                                <input type="text" class="form-control" id="edit-runtime">
+                            </div>
+                            <div class="mb-3">
+                                <label for="edit-poster" class="form-label">New Poster URL</label>
+                                <input type="text" class="form-control" id="edit-poster">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-dark" id="edit-btn">Edit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--END OF EDIT MODAL-->
+
+        <!--START OF DELETE MODAL-->
+        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="deleteModalLabel">Delete a movie</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <select class="form-select delete-menu mt-3 mb-3" id="select-delete" aria-label="Default select example"></select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-dark" id="delete-btn">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--END OF DELETE MODAL-->
+
+    </section>
+    <!--END OF SEARCH BAR AND MODAL CONTAINER-->
+
+
+    <!--START OF FOOTER-->
+    <div class="d-flex flex-column h-100">
+        <footer class="w-100 py-4 flex-shrink-0">
+            <div class="container py-4">
+                <div class="row gy-4 gx-5">
+                    <div class="col-lg-4 col-md-6">
+                        <h6 class=" h3"><a class="footer-logo" href="#"><i class="fa-solid fa-film"></i> Black & White Cinema</a></h6>
+                        <p class="small">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti doloremque dolorum maiores? Ab, accusamus blanditiis debitis dolorum ducimus eaque eius expedita illo ipsum maxime neque non omnis quia tenetur voluptatum.</p>
+                        <p class="small mb-0">&copy 2023; All rights reserved. <a class="" href="#"><i class="fa-solid fa-film"></i>  www.blackandhitecinema.com</a></p>
+                    </div>
+                    <div class="col-lg-2 col-md-6">
+                        <h5 class=" mb-3">Quick links</h5>
+                        <ul class="list-unstyled text-muted">
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Legal</a></li>
+                            <li><a href="#">Terms & Conditions</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">Help & Support</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2 col-md-6">
+                        <h5 class=" mb-3">Social Media</h5>
+                        <ul class="list-unstyled text-muted text-left">
+                            <li>
+                                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="icon-custom fa-brands fa-facebook-f fa-fw"></i></a>
+                            </li>
+                            <li>
+                                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="icon-custom fab fa-twitter fa-fw"></i></a>
+                            </li>
+                            <li>
+                                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="icon-custom fab fa-instagram fa-fw"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <h5 class=" mb-3">Newsletter</h5>
+                        <p class="">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+                        <form action="#">
+                            <div class="input-group mb-3">
+                                <input class="form-control" type="text" placeholder="Email address" aria-label="user's email address" aria-describedby="button-addon2">
+                                <button class="btn btn-dark" id="button-addon2" type="button"><i class="fas fa-paper-plane"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>
+<!--END OF FOOTER-->
+</div>
+<!--END OF HTML-->
 
 <!-- The core Firebase JS SDK and Databse library -->
 <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
@@ -18,6 +465,13 @@
 
 <!-- Your local JS file to add functions that interact with the database -->
 <script src="js/movies-api.js"></script>
+
+<!--jQuery-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+<!--Bootstrap-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+<!--Custom-->
 
 <!-- Your local JS file to add functions that USE your functions from movies-api.js
     and INTERACT with the DOM -->
