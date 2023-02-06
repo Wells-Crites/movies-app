@@ -210,8 +210,5 @@ $("#search-menu").change(function (){
 
 });
 
-
-
-
 })();
 

@@ -1,62 +1,75 @@
 /*GENERAL STYLES*/
+:root{
+    --main-bg: #181e24d9;
+    --secondary-bg: #1b2328d9;
+    --aux-color-1: #F3F3F3;
+    --aux-color-2: #2185D5;
+    --nav-link-color: #000;
+    --movie-stars: #CFB87C;
+}
 *{
     margin: 0;
     padding: 0;
 }
-body {
-    background-color: rgba(24,30,36);
+ body {
+    background-color: var(--main-bg);
     font-family: 'Noto Sans', sans-serif;
     font-family: 'Nunito Sans', sans-serif;
 }
-.page-wrapper{
-    background-color: rgba(24,30,36);
-}
+
+ .page-wrapper{
+     background-color: var(--main-bg);
+ }
 
 /*NAVIGATION SECTION STYLES*/
 .bg-body-tertiary{
     background-color: rgba(24,30,36) !important;
 }
 .navbar-toggler{
-    background-color: #FFFFFF ;
+    background-color: var(--aux-color-1);
+}
+.navbar-toggler:hover{
+    background-color: var(--movie-stars);;
 }
 .nav-logo{
-    color: #fff;
+    color: var(--aux-color-1);
     font-size: 2rem;
 }
 .nav-logo:hover{
-    color: #888
+    color: var(--aux-color-1);
 }
 .nav-link {
-    color: #000;
+    color: var(--nav-link-color);
 }
 
 .nav-link:hover {
-    color: rgba(248,249,250, 1);
+    color: var(--aux-color-1);
 }
 
 .dropdown-menu-dark{
-    color: #FFF;
-    background-color: #000;
+    color: var(--aux-color-1);
+    background-color: var(--aux-color-1);
 }
 
 /*MAIN, MOVIE CARDS, OFFCANAVS, AND MODAL SECTION STYLES*/
 .movie-container{
-    background-color: rgba(24,30,36);
+    background-color: var(--main-bg);
 }
 .hero-container{
     background: url("images/popcorn.jpeg");
     background-size: contain;
-
 }
 .hero-btn{
-    color: #fff;
-    background-color: #000;
+    color: var(--aux-color-1);
+    background-color: var(--aux-color-2);
 }
 .hero-btn:hover{
-    border: 1px solid #000;
+    border: 1px solid var(--aux-color-1);
+    background-color: var(--secondary-bg);
+    color: var(--aux-color-2);
 }
 .coming-soon{
-    color: #fff;
+    color: var(--aux-color-1);
     margin: 3rem auto;
 
 }
@@ -69,7 +82,7 @@ body {
     overflow: hidden;
 }
 .now-playing{
-    color: #FFFFFF;
+    color: var(--aux-color-1);
     margin: 5rem auto;
 }
 .loading{
@@ -92,8 +105,8 @@ body {
     height: 350px;
 }
 .card-custom{
-    background: rgb(232,232,232);
-    background: radial-gradient(circle, rgb(232,232,232) 0%, rgba(232,232,232,0.5452556022408963) 84%);
+    background: var(--aux-color-1);
+    background: radial-gradient(circle, var(--aux-color-1) 0%, rgba(232,232,232,0.5452556022408963) 84%);
     text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.8);
     box-shadow: rgba(242, 242, 242) 2px 8px 2px;
     font-style: normal;
@@ -121,7 +134,7 @@ body {
 }
 .movie-stars{
     text-align: center;
-    color: gold;
+    color: var(--movie-stars);
 }
 .plot{
     font-weight: 500;
@@ -135,12 +148,15 @@ body {
     align-items: center;
     margin: 5rem auto;
 }
-/*.add-modal-btn, .edit-modal-btn,.delete-modal-btn {*/
-/*    width: 17rem;*/
-/*    height: 4rem;*/
-/*}*/
 .search-menu{
    text-align: center;
+}
+
+.search-bar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
 }
 
 #search-btn {
@@ -148,41 +164,39 @@ body {
     justify-content: center;
     align-items: center;
     margin: auto 0.5rem;
-    width: 5rem;
-    height: 2.4rem;
-    color: #000;
-    background-color: #fff;
+    width: 6rem;
+    height: 3rem;
+    color: var(--aux-color-1);
+    background-color: var(--aux-color-2);
+}
+#search-btn:hover{
+    background-color: var(--secondary-bg);
+    color: var(--aux-color-2);
+    border: 1px solid var(--aux-color-1);
 }
 
 .add-modal-btn:hover, .edit-modal-btn:hover, .delete-modal-btn:hover{
-    background-color: #ced4da;
-}
-/*.add-modal-btn, .edit-modal-btn,.delete-modal-btn:hover{*/
-/*    opacity: 0.8;*/
-/*}*/
-#search-btn:hover{
-    color: #FFF;
-    background-color: #000;
+    background-color: var(--aux-color-1);
 }
 
 /*FOOTER SECTION STYLES*/
 
 footer{
-    background-color: rgba(24,30,36);
-    color: #fff;
+    background-color: var(--secondary-bg);
+    color: var(--aux-color-1);
 }
 
 .footer-hr{
-    color:#fff ;
+    color:var(--aux-color-1);
     margin: 5rem auto 0.5rem auto;
 }
 
 .footer-logo:hover{
-    color: #fff;
+     color: var(--aux-color-1);
 }
 
 a{
-    color: #fff;
+    color: var(--aux-color-1);
 }
 a:link {
     text-decoration: none;
@@ -193,7 +207,7 @@ a:visited {
 }
 
 a:hover {
-    color: #495057;
+    color: var(--aux-color-1);
     text-decoration: none;
 }
 
@@ -205,47 +219,149 @@ a:active {
     font-size: 1rem;
 }
 
-/*MEDIA QUIRES*/
+/*MEDIA QUERIES*/
 
-/*@media screen and (min-width: 200px) and (max-width: 576px){*/
-/*    .modal-container{*/
-/*        display: flex;*/
-/*        flex-direction: column;*/
-/*        justify-content: space-evenly;*/
-/*    }*/
+@media screen and (min-width: 200px) and (max-width: 576px){
+    .nav-logo{
+        text-wrap: normal;
+        word-wrap: normal;
+        font-size: 1.3rem;
+    }
+    .img{
+        margin: 0 auto;
+        max-width: 100%;
+    }
+    .classic-movie-poster{
+        margin: 5rem auto 0 auto;
+    }
+    .classic-movie{
+        text-align: center;
+    }
+    .hero-container{
+        background: url("images/popcorn.jpeg");
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    .hero-btn{
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto auto;
+    }
 
-/*    .add-modal-btn, .edit-modal-btn,.delete-modal-btn{*/
-/*        margin: 1rem auto;*/
-/*        width: 17rem;*/
-/*        height: 5rem;*/
-/*    }*/
-/*}*/
+    .hero-btn-save{
+        margin-bottom: 1rem;
+    }
+    .search-bar{
+        width: 90%;
+    }
 
-/*@media screen and (min-width: 577px) and (max-width: 767px){*/
-/*    .modal-container{*/
-/*        display: flex;*/
-/*        flex-direction: column;*/
-/*        justify-content: space-evenly;*/
-/*    }*/
+    footer{
+        text-align: center;
+    }
 
-/*    .add-modal-btn, .edit-modal-btn,.delete-modal-btn{*/
-/*        margin: 1rem auto;*/
-/*        width: 25rem;*/
-/*        height: 7rem;*/
-/*    }*/
-/*}*/
+    .social-media-icons{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+}
+
+@media screen and (min-width: 577px) and (max-width: 767px){
+    .nav-logo{
+        text-wrap: normal;
+        word-wrap: normal;
+        font-size: 1.3rem;
+    }
+    .img{
+        margin: 0 auto;
+        max-width: 100%;
+    }
+    .classic-movie-poster{
+        margin: 5rem auto 0 auto;
+    }
+    .classic-movie{
+        text-align: center;
+    }
+    .hero-container{
+        background: url("images/popcorn.jpeg");
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    .hero-btn{
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto auto;
+    }
+
+    .hero-btn-save{
+        margin-bottom: 1rem;
+    }
+    .search-bar{
+        width: 80%;
+    }
+    footer{
+        text-align: center;
+    }
+    .social-media-icons{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
 
 
-/*@media screen and (min-width: 768px) and (max-width: 992px){*/
-/*    .modal-container{*/
-/*        display: flex;*/
-/*        flex-direction: column;*/
-/*        justify-content: space-evenly;*/
-/*    }*/
+@media screen and (min-width: 768px) and (max-width: 992px){
+    .nav-logo{
+        text-wrap: normal;
+        word-wrap: normal;
+        font-size: 1.3rem;
+    }
+    .img{
+        margin: 0 auto;
+        max-width: 100%;
+    }
+    .classic-movie-poster{
+        margin: 5rem auto 0 auto;
+    }
+    .classic-movie{
+        text-align: center;
+    }
+    .classic-movie-btn-container{
+        display: flex;
+        justify-content: center !important;
+        align-items: center;
+    }
+    .hero-btn{
+        margin-bottom: 1rem;
+    }
+    .hero-container{
+        background: url("images/popcorn.jpeg");
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    .hero-btn-save{
+        margin-bottom: 1rem;
+    }
+    .search-bar{
+        width: 80%;
+    }
 
-/*    .add-modal-btn, .edit-modal-btn,.delete-modal-btn{*/
-/*        margin: 1rem auto;*/
-/*        width: 20rem;*/
-/*        height: 5rem;*/
-/*    }*/
-/*}*/
+    footer{
+        text-align: center;
+    }
+    .social-media-icons{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+@media screen and (min-width: 1500px) and (max-width: 2500px){
+    .search-bar{
+        max-width: 60%;
+    }
+}
