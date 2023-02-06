@@ -21,6 +21,7 @@ body {
 }
 .nav-logo{
     color: #fff;
+    font-size: 2rem;
 }
 .nav-logo:hover{
     color: #888
@@ -117,6 +118,10 @@ body {
     text-align: center;
     margin: 0.5rem auto;
     word-wrap: break-word;
+}
+.movie-stars{
+    text-align: center;
+    color: gold;
 }
 .plot{
     font-weight: 500;

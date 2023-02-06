@@ -3,6 +3,23 @@
     // Before you can use the database, you need to configure the "db" object 
     // with your team name in the "js/movies-api.js" file.
     let moviesArray = [];
+    const movieStars = (movie) => {
+        let ratingDisplay = "";
+        const fullStars = Math.floor(movie.user_rating);
+        const fractionalStar = movie.user_rating % 1;
+        for (let i = 0; i < fullStars; i++) {
+            ratingDisplay += "<i class=\"fa-solid fa-star\"></i>";
+        }
+        if (fractionalStar >= 0.5) {
+            ratingDisplay += "<i class=\"fa-solid fa-star-half-stroke\"></i>";
+        } else if (fractionalStar > 0) {
+            ratingDisplay += "<i class=\"fa-solid fa-star-half-stroke\"></i>";
+        }
+        return ratingDisplay;
+    }
+
+
+
 
 
     // This function loads the "loading" GIF on page load and then calls the getMovies() function to get all the movies in
@@ -26,6 +43,7 @@ const movies = async () => {
                             <h3 class="rating">${movie.rating}</h3>
                             <h4 class="released">Released: ${movie.released_year}</h4>
                             <h5 class="user-rating">Rating: ${movie.user_rating}</h5>
+                            <div class="movie-stars">${movieStars(movie)}</div>
                             <div class="director">Directed by: ${movie.director}</div>
                             <div class="genre">Genre: ${movie.genre}</div>
                             <div class="plot">Plot:
@@ -191,6 +209,8 @@ $("#search-menu").change(function (){
     });
 
 });
+
+
 
 
 })();
