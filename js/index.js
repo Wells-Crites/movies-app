@@ -15,18 +15,25 @@ const movies = async () => {
     movies.forEach((movie) => {
         movieCard +=
             `<div class="w-100">
-<!--                <div class="col-lg-4 col-md-6 col-sm-12">-->
                  <div class="card card-custom jump">
                    <img src='${movie.poster_url}' class="card-img-top" alt="movie poster">
                             <h1 class="title">${movie.title}</h1>
-                            <h3 class="rating">${movie.rating}</h3>
-                            <h4 class="released">Released: ${movie.released_year}</h4>
-                            <h5 class="user-rating">Rating: ${movie.user_rating}</h5>
-                            <div class="director">Directed by: ${movie.director}</div>
-                            <div class="genre">Genre: ${movie.genre}</div>
+                            <h5 class="user-rating">Audience Score: ${movie.user_rating}/10</h5>
+<!-- info div -->
+                 <div class="info">
+                 <p class="released">Released: <span>${movie.released_year}</span></p>
+                 <p class="rating">Rated: <span>${movie.rating}</span></p>
+                 <p class="director">Director: <span>${movie.director}</span></p>
+                 <p class="cast">Cast: <span>${movie.cast}</span></p>
+                 <p class="writers">Writers: <span>${movie.writers}</span></p>
+                 <p class="awards">Awards: <span>${movie.awards}</span></p>
+                 <p class="runtime">Runtime: <span>${movie.runtime}</span></p>
+                 <p class="genre">Genre: <span>${movie.genre}</span></p>
+                 </div>
                             <div class="plot">Plot:
                                 <div class="plot-data">${movie.plot}</div>
                             </div>
+
                  </div>
              </div>`
 
@@ -45,21 +52,25 @@ const movies = async () => {
 
 const updateMovieCard = (input) =>{
     let movieCard = "";
-    movieCard += `<div class="col-lg-4 col-md-6 col-sm-12">
-                                  <div class="card jump">
-                                     <img src='${input.poster_url}' class="card-img-top" alt="movie poster">
-                                        <h1 class="title">${input.title}</h1>
-                                        <h3 class="rating">${input.rating}</h3>
-                                        <h4 class="released">Released: ${input.released_year}</h4>
-                                        <h5 class="user-rating">Rating: ${input.user_rating}</h5>
-                                        <div class="director">Directed by: ${input.director}</div>
-                                        <div class="genre">Genre: ${input.genre}</div>
-                                        <div class="plot">Plot:
-                                            <div class="plot-data">${input.plot}</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>`
+            `<div class="card card-custom jump">
+                   <img src='${input.poster_url}' class="card-img-top" alt="movie poster">
+                            <h1 class="title">${input.title}</h1>
+                            <h5 class="user-rating">Audience Score: ${input.user_rating}/10</h5>
+<!-- info div -->
+                 <div class="info">
+                 <p class="released">Released: <span>${input.released_year}</span></p>
+                 <p class="rating">Rated: <span>${input.rating}</span></p>
+                 <p class="director">Director: <span>${input.director}</span></p>
+                 <p class="cast">Cast: <span>${input.cast}</span></p>
+                 <p class="writers">Writers: <span>${input.writers}</span></p>
+                 <p class="awards">Awards: <span>${input.awards}</span></p>
+                 <p class="runtime">Runtime: <span>${input.runtime}</span></p>
+                 <p class="genre">Genre: <span>${input.genre}</span></p>
+                 </div>
+                            <div class="plot">Plot:
+                                <div class="plot-data">${input.plot}</div>
+                            </div>
+             </div>`
     $("#movies").append(movieCard);
 }
 //     Add movies
@@ -73,7 +84,11 @@ const updateMovieCard = (input) =>{
             plot: $("#user-plot").val(),
             genre: $('#user-genre').val(),
             user_rating: $("#user-rating-score").val(),
-            poster_url: $('#user-poster').val()
+            poster_url: $('#user-poster').val(),
+            cast: $('#user-cast').val(),
+            writers: $('#user-writers').val(),
+            awards: $('#user-awards').val(),
+            runtime: $('#user-runtime').val()
         }
 
         addMovie(userAddedMovieData)
@@ -99,27 +114,38 @@ $("#edit-btn").on('click', () => {
         plot: $("#edit-plot").val(),
         genre: $('#edit-genre').val(),
         user_rating: $("#edit-rating-score").val(),
-        poster_url: $('#edit-poster').val()
+        poster_url: $('#edit-poster').val(),
+        cast: $('#edit-cast').val(),
+        writers: $('#edit-writers').val(),
+        awards: $('#edit-awards').val(),
+        runtime: $('#edit-runtime').val()
     }
 
     let movieCard = "";
     for (let movie of moviesArray) {
         if (movie.id === movieCard){
-            movieCard += `<div class="col-lg-4 col-md-6 col-sm-12">
-                                  <div class="card jump">
-                                     <img src='${userEditInput.poster_url}' class="card-img-top" alt="movie poster">
-                                        <h1 class="title">${userEditInput.title}</h1>
-                                        <h3 class="rating">${userEditInput.rating}</h3>
-                                        <h4 class="released">Released: ${userEditInput.released_year}</h4>
-                                        <h5 class="user-rating">Rating: ${userEditInput.user_rating}</h5>
-                                        <div class="director">Directed by: ${userEditInput.director}</div>
-                                        <div class="genre">Genre: ${userEditInput.genre}</div>
-                                        <div class="plot">Plot:
-                                            <div class="plot-data">${userEditInput.plot}</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>`
+                       `<div class="w-100">
+                            <div class="card card-custom jump">
+                              <img src='${userEditInput.poster_url}' class="card-img-top" alt="movie poster">
+                                       <h1 class="title">${userEditInput.title}</h1>
+                                       <h5 class="user-rating">Audience Score: ${userEditInput.user_rating}/10</h5>
+           <!-- info div -->
+                            <div class="info">
+                            <p class="released">Released: <span>${userEditInput.released_year}</span></p>
+                            <p class="rating">Rated: <span>${userEditInput.rating}</span></p>
+                            <p class="director">Director: <span>${userEditInput.director}</span></p>
+                            <p class="cast">Cast: <span>${userEditInput.cast}</span></p>
+                            <p class="writers">Writers: <span>${userEditInput.writers}</span></p>
+                            <p class="awards">Awards: <span>${userEditInput.awards}</span></p>
+                            <p class="runtime">Runtime: <span>${userEditInput.runtime}</span></p>
+                            <p class="genre">Genre: <span>${userEditInput.genre}</span></p>
+                            </div>
+                                       <div class="plot">Plot:
+                                           <div class="plot-data">${userEditInput.plot}</div>
+                                       </div>
+
+                            </div>
+                        </div>`
         }
     }
     $("#movies").append(movieCard);
