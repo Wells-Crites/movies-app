@@ -129,15 +129,15 @@
 <!--px-4 py-5-->
     <div class="container-fluid hero-container col-xxl-8 w-100">
         <div class="row flex-lg-row-reverse align-items-center g-5">
-            <div class="col-10 col-sm-8 col-lg-6">
-                <img src="images/Jurassic-Park.jpeg" class="d-block mx-lg-auto img-fluid p-4" width="400px" alt="" loading="lazy">
+            <div class="col-10 col-sm-8 col-lg-6 classic-movie-poster">
+                <img src="images/Jurassic-Park.jpeg" class="d-block mx-lg-auto mx-md-auto img-fluid p-4" width="400px" alt="" loading="lazy">
             </div>
             <div class="col-lg-6">
-                <h1 class="display-5 fw-bold lh-1 mb-3">Classic Movie Night Spot Light</h1>
-                <p class="lead">"God creates dinosaurs. God destroys dinosaurs. God creates Man. Man destroys God. Man creates Dinosaurs." -Dr. Ian Malcom, 1993. </p>
-                <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                <h1 class="display-5 fw-bold lh-1 mb-3 classic-movie">Classic Movie Night Spot Light</h1>
+                <p class="classic-movie">"God creates dinosaurs. God destroys dinosaurs. God creates Man. Man destroys God. Man creates Dinosaurs." -Dr. Ian Malcom, 1993. </p>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-start classic-movie-btn-container">
                     <button type="button" class="btn btn-lg hero-btn px-4 me-md-2">Watch</button>
-                    <button type="button" class="btn  btn-lg hero-btn px-4">Save</button>
+                    <button type="button" class="btn btn-lg hero-btn hero-btn-save px-4">Save</button>
                 </div>
             </div>
         </div>
@@ -220,10 +220,10 @@
         <section class="container-fluid modal-container">
 
             <!--START OF SEARCHBAR-->
-            <div class="d-flex w-50" role="search">
+            <div class="d-flex search-bar" role="search">
                 <!--mt-3 mb-3-->
-                <select class="form-select search-menu" id="search-menu" aria-label="Default select example"></select>
-                <button class="btn btn-outline-dark" id="search-btn" type="submit">Search</button>
+                <select class=" form-select form-select-lg search-menu" id="search-menu" aria-label="Default select example"></select>
+                <button class="btn btn-outline-dark search-btn" id="search-btn" type="submit">Search</button>
             </div>
         </section>
         <!--END OF SEARCHBAR-->
@@ -407,7 +407,7 @@
                     <div class="col-lg-4 col-md-6">
                         <h6 class=" h3"><a class="footer-logo" href="#"><i class="fa-solid fa-film"></i> Black & White Cinema</a></h6>
                         <p class="small">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti doloremque dolorum maiores? Ab, accusamus blanditiis debitis dolorum ducimus eaque eius expedita illo ipsum maxime neque non omnis quia tenetur voluptatum.</p>
-                        <p class="small mb-0">&copy 2023; All rights reserved. <a class="" href="#"><i class="fa-solid fa-film"></i>  www.blackandhitecinema.com</a></p>
+                        <p class="small mb-0">&copy 2023, All rights reserved. <a class="" href="#"><i class="fa-solid fa-film"></i>  www.blackandhitecinema.com</a></p>
                     </div>
                     <div class="col-lg-2 col-md-6">
                         <h5 class=" mb-3">Quick links</h5>
@@ -422,7 +422,8 @@
                     </div>
                     <div class="col-lg-2 col-md-6">
                         <h5 class=" mb-3">Social Media</h5>
-                        <ul class="list-unstyled text-muted text-left">
+                        <ul class="list-unstyled text-muted text-center
+                         social-media-icons">
                             <li>
                                 <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="icon-custom fa-brands fa-facebook-f fa-fw"></i></a>
                             </li>

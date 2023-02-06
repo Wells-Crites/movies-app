@@ -1,8 +1,22 @@
 (async () => {
     // This is the entry point for your application. Write all of your code here.
-    // Before you can use the database, you need to configure the "db" object 
+    // Before you can use the database, you need to configure the "db" object
     // with your team name in the "js/movies-api.js" file.
     let moviesArray = [];
+    const movieStars = (movie) => {
+        let ratingDisplay = "";
+        const fullStars = Math.floor(movie.user_rating);
+        const fractionalStar = movie.user_rating % 1;
+        for (let i = 0; i < fullStars; i++) {
+            ratingDisplay += "<i class=\"fa-solid fa-star\"></i>";
+        }
+        if (fractionalStar >= 0.5) {
+            ratingDisplay += "<i class=\"fa-solid fa-star-half-stroke\"></i>";
+        } else if (fractionalStar > 0) {
+            ratingDisplay += "<i class=\"fa-solid fa-star-half-stroke\"></i>";
+        }
+        return ratingDisplay;
+    }
 
 const movies = async () => {
     let loading = `<div class="loading"><img class="img-loading m-auto" src="/images/loading.gif"></div>`;
@@ -37,18 +51,21 @@ const movies = async () => {
                  </div>
              </div>`
 
-        movieData += `<option value=${movie.id}>${movie.title}</option>`;
+            movieData += `<option value=${movie.id}>${movie.title}</option>`;
 
-        $("#movies").html(movieCard);
-        $(".delete-menu").html("<option selected>Select a movie to delete</option>" + movieData);
-        $(".edit-menu").html("<option selected>Select a movie to edit</option>" + movieData);
-        $(".search-menu").html("<option selected>Search movies now playing</option>" + movieData);
-    });
+            $("#movies").html(movieCard);
+            $(".delete-menu").html("<option selected>Select a movie to delete</option>" + movieData);
+            $(".edit-menu").html("<option selected>Select a movie to edit</option>" + movieData);
+            $(".search-menu").html("<option selected>Search movies now playing</option>" + movieData);
+        });
 
 
-}
+    }
 
- movies();
+    movies();
+
+//This function allows the user to create and add a new movie to the database while dynamically updating the DOM
+//with the new movie card.
 
 const updateMovieCard = (input) =>{
     let movieCard = "";
@@ -74,6 +91,7 @@ const updateMovieCard = (input) =>{
     $("#movies").append(movieCard);
 }
 //     Add movies
+
     $('#add-btn').on('click', () => {
 
         let userAddedMovieData = {
@@ -146,44 +164,45 @@ $("#edit-btn").on('click', () => {
 
                             </div>
                         </div>`
+
         }
-    }
-    $("#movies").append(movieCard);
+        $("#movies").append(movieCard);
 
-    updateMovie(availableMovies, userEditInput);
-    movies();
+        updateMovie(availableMovies, userEditInput);
+        movies();
 
-});
+    });
 
 //Delete Movie
 
-$("#select-delete").change( function () {
-    //Gets the user selected movie data from the dropdown menu
-    let userSelection = $(this).val();
-    console.log(userSelection);
+    $("#select-delete").change( function () {
+        //Gets the user selected movie data from the dropdown menu
+        let userSelection = $(this).val();
+        console.log(userSelection);
 
-    //When the submit button is clicked, the function sends the DELETE request to the database with the user selected information to be deleted.
-    $("#delete-btn").on('click', function (){
-       deleteMovie({id:userSelection})
-        movies();
-    })
+        //When the submit button is clicked, the function sends the DELETE request to the database with the user selected information to be deleted.
+        $("#delete-btn").on('click', function (){
+            deleteMovie({id:userSelection})
+            movies();
+        })
 
-});
+    });
 
 //Search function
 
-$("#search-menu").change(function (){
+    $("#search-menu").change(function (){
 
-    let selectedMovie = $(this).val();
-    console.log(selectedMovie);
+        let selectedMovie = $(this).val();
+        console.log(selectedMovie);
 
-    $('#movies').empty();
+        $('#movies').empty();
 
-    let movieCard = "";
-    for (let movie of moviesArray) {
-        if (movie.id === selectedMovie){
-            movieCard += `<div class="col-lg-4 col-md-6 col-sm-12">
-                                  <div class="card jump">
+
+        let movieCard = "";
+        for (let movie of moviesArray) {
+            if (movie.id === selectedMovie){
+                movieCard += `<div class="w-100">
+                                  <div class="card card-custom jump">
                                      <img src='${movie.poster_url}' class="card-img-top" alt="movie poster">
                                         <h1 class="title">${movie.title}</h1>
                                         <h3 class="rating">${movie.rating}</h3>
@@ -197,17 +216,15 @@ $("#search-menu").change(function (){
                                     </div>
                                 </div>
                             </div>`
+            }
         }
-    }
-    $("#movies").append(movieCard);
+        $("#movies").append(movieCard);
 
-    $("#search-btn").on('click', function (){
-        // console.log("Clicked")
-        searchMovie({id:selectedMovie})
+        $("#search-btn").on('click', function (){
+            // console.log("Clicked")
+            searchMovie({id:selectedMovie})
+        });
+
     });
 
-});
-
-
 })();
-
