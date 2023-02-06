@@ -104,6 +104,37 @@ body {
     color: #eee;
     /*#f1f3f5*/
 }
+
+.card-custom:hover .info {
+    display: block;
+}
+
+.info {
+    background-color: #101020;
+    border-radius: 10px;
+    position: absolute;
+    padding: 10px;
+    top: 20px;
+    text-align: left;
+    cursor: pointer;
+    left: -10px;
+    width: 300px;
+    z-index: 2;
+    box-shadow: 0 0 2px 1px #aaa;
+    display: none;
+}
+
+.info p {
+    display: inline-block;
+    margin: 2px;
+    font-size: .7em;
+}
+
+.info span {
+    font-size: .9em;
+    color: #8080d8;
+}
+
 .jump {
     transition: all .2s ease-in-out;
 }
