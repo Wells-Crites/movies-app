@@ -119,7 +119,17 @@
     /*#f1f3f5*/
 }
 
-.card-custom:hover .info {
+/*.card-custom:hover .info {*/
+/*    display: block;*/
+/*}*/
+.information-icon{
+    display: block;
+    justify-content: center;
+    align-items: center;
+    margin: 1.3rem auto;
+}
+
+.display-info{
     display: block;
 }
 
@@ -128,11 +138,13 @@
     border-radius: 10px;
     position: absolute;
     padding: 10px;
-    top: 20px;
+    font-size: 2rem;
+    top: 0px;
     text-align: left;
     cursor: pointer;
-    left: -10px;
-    width: 300px;
+    left: 0px;
+    width: 35rem;
+    height: 25rem;
     z-index: 2;
     box-shadow: 0 0 2px 1px #aaa;
     display: none;
@@ -161,7 +173,7 @@
     padding-right: 1rem;
 }
 
-.title, .rating, .released, .user-rating, .director, .genre, .plot {
+.title, .rating, .released, .user-rating, .director, .plot {
     text-align: center;
     margin: 0.5rem auto;
     word-wrap: break-word;
@@ -290,7 +302,9 @@ a:active {
     .search-bar{
         width: 90%;
     }
-
+    .info{
+        visibility: hidden ;
+    }
     footer{
         text-align: center;
     }
@@ -334,6 +348,12 @@ a:active {
 
     .hero-btn-save{
         margin-bottom: 1rem;
+    }
+    .info{
+        font-size: 1.4rem
+    ;
+        width: auto;
+        height: auto;
     }
     .search-bar{
         width: 80%;
@@ -384,7 +404,22 @@ a:active {
     .search-bar{
         width: 80%;
     }
-
+    .info {
+        background-color: #101020;
+        border-radius: 10px;
+        position: absolute;
+        padding: 10px;
+        font-size: 2rem;
+        top: 0px;
+        text-align: left;
+        cursor: pointer;
+        left: 0px;
+        width: auto;
+        height: auto;
+        z-index: 2;
+        box-shadow: 0 0 2px 1px #aaa;
+        display: none;
+    }
     footer{
         text-align: center;
     }
@@ -394,6 +429,8 @@ a:active {
         align-items: center;
     }
 }
+
+
 @media screen and (min-width: 1500px) and (max-width: 2500px){
     .search-bar{
         max-width: 60%;

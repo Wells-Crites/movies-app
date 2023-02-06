@@ -32,7 +32,13 @@ const movies = async () => {
                  <div class="card card-custom jump">
                    <img src='${movie.poster_url}' class="card-img-top" alt="movie poster">
                             <h1 class="title">${movie.title}</h1>
+                            <h3 class="movie-stars">${movieStars(movie)}</h3>
                             <h5 class="user-rating">Audience Score: ${movie.user_rating}/10</h5>
+                            <div class="information-icon" id="information-icon">
+                            <button class="btn btn-lg info-btn"> <i class="fa-solid fa-circle-info fa-xl"></i></button>
+                            </div>
+                            
+                            
 <!-- info div -->
                  <div class="info">
                  <p class="released">Released: <span>${movie.released_year}</span></p>
@@ -115,7 +121,6 @@ const updateMovieCard = (input) =>{
 
 
 
-
 //Edit Movies
 
 $("#edit-btn").on('click', () => {
@@ -141,8 +146,8 @@ $("#edit-btn").on('click', () => {
 
     let movieCard = "";
     for (let movie of moviesArray) {
-        if (movie.id === movieCard){
-                       `<div class="w-100">
+        if (movie.id === movieCard) {
+            `<div class="w-100">
                             <div class="card card-custom jump">
                               <img src='${userEditInput.poster_url}' class="card-img-top" alt="movie poster">
                                        <h1 class="title">${userEditInput.title}</h1>
@@ -164,14 +169,14 @@ $("#edit-btn").on('click', () => {
 
                             </div>
                         </div>`
-
         }
+
         $("#movies").append(movieCard);
 
         updateMovie(availableMovies, userEditInput);
         movies();
-
-    });
+    }
+});
 
 //Delete Movie
 
@@ -227,4 +232,12 @@ $("#edit-btn").on('click', () => {
 
     });
 
+
 })();
+
+$('#info-btn').on('click', function () {
+    console.log("I was clicked!");
+    $(this).toggleClass('.display-info');
+})
+
+
