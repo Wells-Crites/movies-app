@@ -18,28 +18,23 @@
         return ratingDisplay;
     }
 
-const movies = async () => {
-    let loading = `<div class="loading"><img class="img-loading m-auto" src="/images/loading.gif"></div>`;
-    $("#movies").html(loading);
-    const movies = await getMovies()
-    moviesArray = movies;
-    console.log(movies);
-    let movieData = "";
-    let movieCard = "";
-    movies.forEach((movie) => {
-        movieCard +=
-            `<div class="w-100">
+    const movies = async () => {
+        let loading = `<div class="loading"><img class="img-loading m-auto" src="/images/loading.gif"></div>`;
+        $("#movies").html(loading);
+        const movies = await getMovies()
+        moviesArray = movies;
+        console.log(movies);
+        let movieData = "";
+        let movieCard = "";
+        movies.forEach((movie) => {
+            movieCard +=
+                `<div class="w-100">
                  <div class="card card-custom jump">
                    <img src='${movie.poster_url}' class="card-img-top" alt="movie poster">
-                            <h1 class="title">${movie.title}</h1>
-                            <h3 class="movie-stars">${movieStars(movie)}</h3>
-                            <h5 class="user-rating">Audience Score: ${movie.user_rating}/10</h5>
-                            <div class="information-icon" id="information-icon">
-                            <button class="btn btn-lg info-btn"> <i class="fa-solid fa-circle-info fa-xl"></i></button>
-                            </div>
-                            
-                            
-<!-- info div -->
+                    <h1 class="title">${movie.title}</h1>
+                    <h3 class="movie-stars">${movieStars(movie)}</h3>
+                    <h5 class="user-rating">Audience Score: ${movie.user_rating}/10</h5>                
+                <!-- info div -->
                  <div class="info">
                  <p class="released">Released: <span>${movie.released_year}</span></p>
                  <p class="rating">Rated: <span>${movie.rating}</span></p>
@@ -50,9 +45,9 @@ const movies = async () => {
                  <p class="runtime">Runtime: <span>${movie.runtime}</span></p>
                  <p class="genre">Genre: <span>${movie.genre}</span></p>
                  </div>
-                            <div class="plot">Plot:
-                                <div class="plot-data">${movie.plot}</div>
-                            </div>
+                  <div class="plot">Plot:
+                      <div class="plot-data">${movie.plot}</div>
+                  </div>
 
                  </div>
              </div>`
@@ -68,18 +63,18 @@ const movies = async () => {
 
     }
 
-    movies();
+    await movies();
 
 //This function allows the user to create and add a new movie to the database while dynamically updating the DOM
 //with the new movie card.
 
-const updateMovieCard = (input) =>{
-    let movieCard = "";
-            `<div class="card card-custom jump">
+    const updateMovieCard = (input) => {
+        let movieCard = "";
+        `<div class="card card-custom jump">
                    <img src='${input.poster_url}' class="card-img-top" alt="movie poster">
-                            <h1 class="title">${input.title}</h1>
-                            <h5 class="user-rating">Audience Score: ${input.user_rating}/10</h5>
-<!-- info div -->
+                    <h1 class="title">${input.title}</h1>
+                    <h5 class="user-rating">Audience Score: ${input.user_rating}/10</h5>
+                <!-- info div -->
                  <div class="info">
                  <p class="released">Released: <span>${input.released_year}</span></p>
                  <p class="rating">Rated: <span>${input.rating}</span></p>
@@ -90,16 +85,16 @@ const updateMovieCard = (input) =>{
                  <p class="runtime">Runtime: <span>${input.runtime}</span></p>
                  <p class="genre">Genre: <span>${input.genre}</span></p>
                  </div>
-                            <div class="plot">Plot:
-                                <div class="plot-data">${input.plot}</div>
-                            </div>
+                 <div class="plot">Plot:
+                     <div class="plot-data">${input.plot}</div>
+                 </div>
              </div>`
-    $("#movies").append(movieCard);
-}
-//     Add movies
+        $("#movies").append(movieCard);
+        movies();
+    }
 
+    //Allows the user to add movies
     $('#add-btn').on('click', () => {
-
         let userAddedMovieData = {
             title: $("#user-title").val(),
             rating: $("#user-rating").val(),
@@ -115,43 +110,42 @@ const updateMovieCard = (input) =>{
             runtime: $('#user-runtime').val()
         }
 
-        addMovie(userAddedMovieData)
-        updateMovieCard(userAddedMovieData)
+        addMovie(userAddedMovieData);
+        updateMovieCard(userAddedMovieData);
+        movies();
     });
 
 
+    //Allows the user to edit movies
+    $("#edit-btn").on('click', () => {
+        //Allows the user to select from a current list of available movies from the database
+        let availableMovies = $(".edit-menu").val()
+        // console.log(availableMovies);
 
-//Edit Movies
+        //Gets the user's input data for the movie to be edited
+        let userEditInput = {
+            title: $("#edit-title").val(),
+            rating: $("#edit-rating").val(),
+            released_year: $("#edit-release-year").val(),
+            director: $("#edit-director").val(),
+            plot: $("#edit-plot").val(),
+            genre: $('#edit-genre').val(),
+            user_rating: $("#edit-rating-score").val(),
+            poster_url: $('#edit-poster').val(),
+            cast: $('#edit-cast').val(),
+            writers: $('#edit-writers').val(),
+            awards: $('#edit-awards').val(),
+            runtime: $('#edit-runtime').val()
+        }
 
-$("#edit-btn").on('click', () => {
-    //Allows the user to select from a current list of available movies from the database
-    let availableMovies = $(".edit-menu").val()
-    console.log(availableMovies);
-
-    //Gets the user's input data for the movie to be edited
-    let userEditInput = {
-        title: $("#edit-title").val(),
-        rating: $("#edit-rating").val(),
-        released_year: $("#edit-release-year").val(),
-        director: $("#edit-director").val(),
-        plot: $("#edit-plot").val(),
-        genre: $('#edit-genre').val(),
-        user_rating: $("#edit-rating-score").val(),
-        poster_url: $('#edit-poster').val(),
-        cast: $('#edit-cast').val(),
-        writers: $('#edit-writers').val(),
-        awards: $('#edit-awards').val(),
-        runtime: $('#edit-runtime').val()
-    }
-
-    let movieCard = "";
-    for (let movie of moviesArray) {
-        if (movie.id === movieCard) {
-            `<div class="w-100">
+        let movieCard = "";
+        for (let movie of moviesArray) {
+            if (movie.id === movieCard) {
+                `<div class="w-100">
                             <div class="card card-custom jump">
                               <img src='${userEditInput.poster_url}' class="card-img-top" alt="movie poster">
-                                       <h1 class="title">${userEditInput.title}</h1>
-                                       <h5 class="user-rating">Audience Score: ${userEditInput.user_rating}/10</h5>
+                               <h1 class="title">${userEditInput.title}</h1>
+                                <h5 class="user-rating">Audience Score: ${userEditInput.user_rating}/10</h5>
            <!-- info div -->
                             <div class="info">
                             <p class="released">Released: <span>${userEditInput.released_year}</span></p>
@@ -163,31 +157,31 @@ $("#edit-btn").on('click', () => {
                             <p class="runtime">Runtime: <span>${userEditInput.runtime}</span></p>
                             <p class="genre">Genre: <span>${userEditInput.genre}</span></p>
                             </div>
-                                       <div class="plot">Plot:
-                                           <div class="plot-data">${userEditInput.plot}</div>
-                                       </div>
+                            <div class="plot">Plot:
+                              <div class="plot-data">${userEditInput.plot}</div>
+                            </div>
 
                             </div>
                         </div>`
+            }
+
+            $("#movies").append(movieCard);
+
+            updateMovie(availableMovies, userEditInput);
+            movies();
         }
-
-        $("#movies").append(movieCard);
-
-        updateMovie(availableMovies, userEditInput);
-        movies();
-    }
-});
+    });
 
 //Delete Movie
 
-    $("#select-delete").change( function () {
+    $("#select-delete").change(function () {
         //Gets the user selected movie data from the dropdown menu
         let userSelection = $(this).val();
-        console.log(userSelection);
+        // console.log(userSelection);
 
         //When the submit button is clicked, the function sends the DELETE request to the database with the user selected information to be deleted.
-        $("#delete-btn").on('click', function (){
-            deleteMovie({id:userSelection})
+        $("#delete-btn").on('click', function () {
+            deleteMovie({id: userSelection})
             movies();
         })
 
@@ -195,17 +189,14 @@ $("#edit-btn").on('click', () => {
 
 //Search function
 
-    $("#search-menu").change(function (){
+    $("#search-menu").change(function () {
 
         let selectedMovie = $(this).val();
         console.log(selectedMovie);
-
         $('#movies').empty();
-
-
         let movieCard = "";
         for (let movie of moviesArray) {
-            if (movie.id === selectedMovie){
+            if (movie.id === selectedMovie) {
                 movieCard += `<div class="w-100">
                                   <div class="card card-custom jump">
                                      <img src='${movie.poster_url}' class="card-img-top" alt="movie poster">
@@ -222,22 +213,20 @@ $("#edit-btn").on('click', () => {
                                 </div>
                             </div>`
             }
+            else if (selectedMovie === 'Search movies now playing'){
+                $("#movies").append(movies());
+            }
         }
         $("#movies").append(movieCard);
 
-        $("#search-btn").on('click', function (){
+        $("#search-btn").on('click', function () {
             // console.log("Clicked")
-            searchMovie({id:selectedMovie})
+            searchMovie({id: selectedMovie})
         });
 
     });
 
-
 })();
 
-$('#info-btn').on('click', function () {
-    console.log("I was clicked!");
-    $(this).toggleClass('.display-info');
-})
 
 
