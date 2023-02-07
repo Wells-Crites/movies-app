@@ -1,3 +1,4 @@
+"use strict";
 const firebaseConfig = {
     apiKey: keys.firebase,
     authDomain: "codeup-zenith.firebaseapp.com",

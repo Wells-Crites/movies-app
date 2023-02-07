@@ -159,7 +159,7 @@
     padding-right: 1rem;
 }
 
-.title, .rating, .released, .user-rating, .director, .plot {
+.title, .rating, .released, .user-rating, .genre, .director, .plot {
     text-align: center;
     margin: 0.5rem auto;
     word-wrap: break-word;

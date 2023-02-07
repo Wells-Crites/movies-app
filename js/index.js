@@ -1,4 +1,5 @@
 (async () => {
+    "use strict";
     // This is the entry point for your application. Write all of your code here.
     // Before you can use the database, you need to configure the "db" object
     // with your team name in the "js/movies-api.js" file.
@@ -23,7 +24,7 @@
         $("#movies").html(loading);
         const movies = await getMovies()
         moviesArray = movies;
-        console.log(movies);
+        console.log(movies)
         let movieData = "";
         let movieCard = "";
         movies.forEach((movie) => {
@@ -68,12 +69,12 @@
 //This function allows the user to create and add a new movie to the database while dynamically updating the DOM
 //with the new movie card.
 
-    const updateMovieCard = (input) => {
+    const updateMovieCard =  (input) => {
         let movieCard = "";
-        `<div class="card card-custom jump">
-                   <img src='${input.poster_url}' class="card-img-top" alt="movie poster">
-                    <h1 class="title">${input.title}</h1>
-                    <h5 class="user-rating">Audience Score: ${input.user_rating}/10</h5>
+        movieCard += `<div class="card card-custom jump">
+                 <img src='${input.poster_url}' class="card-img-top" alt="movie poster">
+                 <h1 class="title">${input.title}</h1>
+                 <h5 class="user-rating">Audience Score: ${input.user_rating}/10</h5>
                 <!-- info div -->
                  <div class="info">
                  <p class="released">Released: <span>${input.released_year}</span></p>
@@ -89,12 +90,15 @@
                      <div class="plot-data">${input.plot}</div>
                  </div>
              </div>`
+
         $("#movies").append(movieCard);
-        movies();
+
     }
+    await movies();
 
     //Allows the user to add movies
     $('#add-btn').on('click', () => {
+
         let userAddedMovieData = {
             title: $("#user-title").val(),
             rating: $("#user-rating").val(),
@@ -112,8 +116,8 @@
 
         addMovie(userAddedMovieData);
         updateMovieCard(userAddedMovieData);
-        movies();
     });
+
 
 
     //Allows the user to edit movies
@@ -141,7 +145,7 @@
         let movieCard = "";
         for (let movie of moviesArray) {
             if (movie.id === movieCard) {
-                `<div class="w-100">
+                movieCard += `<div class="w-100">
                             <div class="card card-custom jump">
                               <img src='${userEditInput.poster_url}' class="card-img-top" alt="movie poster">
                                <h1 class="title">${userEditInput.title}</h1>
@@ -163,18 +167,17 @@
 
                             </div>
                         </div>`
+                $("#movies").append(movieCard);
             }
-
-            $("#movies").append(movieCard);
-
-            updateMovie(availableMovies, userEditInput);
-            movies();
         }
+        updateMovie(availableMovies, userEditInput);
+        movies()
     });
+
 
 //Delete Movie
 
-    $("#select-delete").change(function () {
+    $("#select-delete").change( function () {
         //Gets the user selected movie data from the dropdown menu
         let userSelection = $(this).val();
         // console.log(userSelection);
@@ -184,12 +187,11 @@
             deleteMovie({id: userSelection})
             movies();
         })
-
     });
 
 //Search function
 
-    $("#search-menu").change(function () {
+    $("#search-menu").change( function () {
 
         let selectedMovie = $(this).val();
         console.log(selectedMovie);
@@ -218,6 +220,7 @@
             }
         }
         $("#movies").append(movieCard);
+
 
         $("#search-btn").on('click', function () {
             // console.log("Clicked")

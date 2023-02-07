@@ -1,3 +1,4 @@
+"use strict";
 // In this project, we will be using a Firebase database to store our movie data.
 // Configuring Firebase is more involved than what is covered in this lesson,
 // so we have provided a class that will handle the configuration for you.
